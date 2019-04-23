@@ -10,7 +10,8 @@ public class HexGrid : MonoBehaviour
 
     public HexCell cellPrefab;
     public Text cellLabelPrefab;
-
+    public Color defaultColor = Color.white;
+    public Color touchedColor = Color.magenta;
     Canvas gridCanvas;
     HexMesh hexMesh;
     HexCell[] cells;
@@ -51,7 +52,8 @@ public class HexGrid : MonoBehaviour
         cell.transform.SetParent(transform,false);
         cell.transform.localPosition = position;
         cell.coordinates = HexCoordinates.FromOffserCorrdinates(x,z);
-    
+        cell.color = defaultColor;
+        
         Text label = Instantiate<Text>(cellLabelPrefab);
         label.rectTransform.SetParent(gridCanvas.transform,false);
         label.rectTransform.anchoredPosition = new Vector2(position.x,position.z);
